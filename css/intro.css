@@ -1,0 +1,42 @@
+
+.intro__inner{
+    width: 410px;
+    padding-left: 140px;
+    padding-top: 190px;
+
+}
+.container {
+    display: flex;
+    padding-left: 138px;
+}
+.providers{
+    margin-top: 150px;
+}
+.intro__title{
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 56px;
+    letter-spacing: 0%;
+    color: #000000;
+ 
+}
+.line{
+    padding-top: 0px;
+    padding-bottom: 30px;
+}
+.intro__paragraph{
+    font-weight: 300;
+    font-size: 18px;
+    line-height: 30px;
+    letter-spacing: 0%;
+    color: #7D7987;
+}
+.default-button.outlined{
+    background: transparent;
+    color:#458FF6;
+    width: 200px;
+    height: 58.74px;
+    border:1.4px solid #458FF6;
+    border-radius: 55px;
+    margin-top: 36.22px;
+}

@@ -10,7 +10,7 @@ a {
 }
 
 li {
-    display: block;
+    display: block; 
 }
 
 p {
@@ -22,7 +22,8 @@ button{
 
 .container {
     margin: 0 auto;
-    max-width: 1200px;
+    max-width: 1400px;
+    padding-top: 40px;
 }
 
 .default-button {
@@ -36,4 +37,13 @@ button{
     top: 564px;
     left: 190px;
     padding: 3px 0;
+}
+.logo {
+    height: 40px;
+    padding-left: 40px;
+}
+.circles{
+    height: 115px;
+    padding-top: 63px;
+
 }
