@@ -1,13 +1,10 @@
 body {
     font-family: "Mulish", sans-serif;
     color: #7D7987;
+    margin: 0;
+    padding: 0;
 }
 
-a {
-    text-decoration: none;
-    color: #1F1534;
-
-}
 
 li {
     display: block; 
@@ -16,13 +13,17 @@ li {
 p {
     margin: 0;
 }
+a {
+    text-decoration: none;
+    color: #1F1534;
+}
 button{
     border: 0;
 }
 
 .container {
     margin: 0 auto;
-    max-width: 1400px;
+    max-width: 1600px;
     padding-top: 40px;
 }
 

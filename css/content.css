@@ -1,5 +1,9 @@
-.content__text {
+.content__inner {
+    width: 850px;      
+    margin: 0 auto;    
     text-align: center;
+    padding-top: 112px;
+    padding-right: 100px;
 }
 .content__title{
     font-weight: 700;
@@ -7,5 +11,20 @@
     line-height: 56px;
     letter-spacing: 0%;
     color: #000000;
+    align-items: center;
+    
 }
-  
+.content__paragraph{
+    width: 950px;
+    font-weight: 300;
+    font-size: 18px;
+    line-height: 30px;
+    letter-spacing: 0%;
+    margin-left: -100px;
+    
+}
+.line2{
+    padding-top: 0px;
+    padding-bottom: 26px;
+    margin-left: -50px;
+}

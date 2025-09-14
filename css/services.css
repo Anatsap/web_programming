@@ -1,0 +1,121 @@
+.services{
+    background-image:
+        url(../images/search_service.svg),
+        url(../images/search_service.svg),
+        url(../images/search_service.svg),
+        url(../images/search_service.svg),
+        url(../images/search_service.svg),
+        url(../images/search_service.svg),
+        url(../images/wave_backround.svg),
+        url(../images/back_circles.svg);
+    background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat;
+    width: 100%;
+    height: 900px;
+    background-size: 
+    450px 454px,
+    450px 454px,
+    450px 454px,
+    450px 454px,
+    450px 454px,
+    450px 454px, 
+    1237px 971px,
+    131px 115;
+    background-position: 
+    left 200px top 60px,
+    left 580px top 60px,
+    left 960px top 60px,
+    left 200px top 450px,
+    left 580px top 450px, 
+    left 960px top 450px,
+    left -20px top -190px,
+    left 1270px top 360px;
+}
+
+
+.services__box1 { 
+    width: 266px; 
+    padding-top: 100px; 
+    padding-left: 279px; 
+    padding-right: 1161px;
+}
+ 
+.services__box2{ 
+    width: 266px;
+    margin-top: -280px; 
+    margin-left: 660px; 
+    margin-right: 743px;
+}
+.services__box3{ 
+    width: 266px;
+    margin-top: -300px; 
+    margin-left: 1048px; 
+    margin-right: 405px;
+}
+.services__box4 { 
+    width: 266px;
+    align-self: flex-start;
+    margin-top: 130px;
+    margin-left: 279px;
+}
+.services__box5 { 
+    width: 266px;
+    margin-top: -280px; 
+    margin-left: 660px; 
+    margin-right: 743px;
+}
+.services__box6{ 
+    width: 266px;
+    align-self: flex-start;
+    margin-top: -290px;
+    margin-left: 1048px; 
+    margin-right: 405px;
+}
+.services__title{
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 56px;
+    letter-spacing: 0%;
+    color: #000000;
+}
+.services__paragraph{
+    font-weight: 250;
+    size: 16px;
+    line-height: 28px;
+    letter-spacing: 0%;
+    color: #7D7987;
+}
+.default-button1.outlined{
+    background: transparent;
+    color:#458FF6;
+    width: 200px;
+    height: 60px;
+    font-weight: 700;
+    font-size: 18px;
+    border:1.4px solid #458FF6;
+    border-radius: 55px;
+    align-items: center;
+    display: block;    
+    margin: 150px auto;
+}
+/*
+.services__box:nth-child(1) { 
+    margin-left: 20px; 
+}
+.services__box:nth-child(2) { 
+    margin-left: 100; 
+}*/
+/*.services__inner {
+    display: flex;       
+    flex-wrap: wrap;     
+    gap: 30px;             
+    justify-content: flex-start;
+    align-items: flex-start; 
+    padding-top: 80px;  
+}
+.services__inner article {
+    width: 160;
+    text-align: left; 
+    padding: 20px;
+    box-sizing: border-box;
+
+}*/

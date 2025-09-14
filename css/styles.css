@@ -2,4 +2,7 @@
 @import "./globals.css";
 @import "./header.css";
 @import "./hero.css";
-@import "./intro.css"
+@import "./intro.css";
+@import "./content.css";
+@import "./services.css";
+@import "./footer.css"
