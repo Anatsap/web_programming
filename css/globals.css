@@ -6,27 +6,44 @@ body {
 }
 
 
+section, .container, img {
+    outline: 1px solid red;
+}
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+  
+  
 li {
     display: block; 
 }
+/*html, body {
+    overflow-x: hidden;
+}*/
 
+/* * {
+    max-width: 100%;
+    box-sizing: border-box;
+} */
+
+/* img {
+    width: 100%;
+    padding: 10px;    
+    box-sizing: border-box; 
+} */
 p {
     margin: 0;
 }
 a {
     text-decoration: none;
-    color: #1F1534;
+    color: #7D7987;
 }
 button{
     border: 0;
 }
-
-.container {
-    margin: 0 auto;
-    max-width: 1600px;
-    padding-top: 40px;
-}
-
+  
 .default-button {
     background: #458FF6;
     font-weight: 700;
@@ -39,10 +56,7 @@ button{
     left: 190px;
     padding: 3px 0;
 }
-.logo {
-    height: 40px;
-    padding-left: 40px;
-}
+
 .circles{
     height: 115px;
     padding-top: 63px;
