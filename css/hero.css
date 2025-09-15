@@ -1,15 +1,14 @@
 .hero{
     background-image: url(../images/healthcare_hero.svg);
     background-repeat: no-repeat;
-    background-position: right 160px bottom;
-    background-position: 747px 167px;
+    background-position: 747px 170px;
 }
 
 
 
 .hero__inner{
     width: 440px;
-    padding-bottom: 154px;
+    padding-bottom: 180px;
     margin-left: 40px;
 }
 
@@ -19,7 +18,7 @@
     line-height: 56px;
     letter-spacing: 0%;
     color: #000000;
-    margin-top: -50px; 
+    margin-top: 50px; 
 
 
 }

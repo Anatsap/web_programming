@@ -5,8 +5,8 @@
     font-weight: 700;
     font-size: 20px;
     position: relative;
-    top:125px;
-    left: 590px;
+    top:310px;
+    left: -150px;
     z-index: 5;
 
 }
@@ -26,23 +26,25 @@
 .footer {
     position: relative;
     width: 100%;
-    height: 261px;
-    margin-top: -50px;
+    height: 400px;
+    margin-top: -20px;
+    
 }
   
 .left_c {
     position: absolute;
     left: 0;
-    top: 160px;
+    top: 300px;
     z-index: 3;
     width: 131px;
     height: 115px;
 }
   
 .bg {
+    padding-top: 100px;
     position: absolute;
     left: 0;
-    top: 100px;
+    top: 150px;
     width: 100%;
     height: 165px;
     z-index: 2;
@@ -51,7 +53,7 @@
 .blue_circles {
     position: absolute;
     right: 30px;
-    top: 30px;
+    top: 180px;
     z-index: 1;
     width: 131px;
     height: 115px;
@@ -61,28 +63,21 @@
     position: absolute;
     font-size: 24px;
     left: 227px;
-    top: 170px;
+    top: 320px;
     width: 160px;
     height: 41px;
     z-index: 5;
   }
-  
-  
 
-/* .footer{
-    background-image: 
-        url("../images/back_circles3.svg"),
-        url("../images/bg.svg"),
-        url("../images/blue_circles.svg");
-    background-repeat: no-repeat, no-repeat, no-repeat;
-    background-position: 
-    left 0px bottom -300px,
-    left 0px top 10px,
-    left 1380px bottom 1000px;
-    background-size:
-    131px 115px,
-    1600px 165px,
-    131px 115px; 
-    width: 100%;
-    height: 300px;
-} */
+.default-button1.outlined {
+    background: transparent;
+    color: #458FF6;
+    width: 200px;
+    height: 60px;
+    font-weight: 700;
+    font-size: 18px;
+    border: 1.4px solid #458FF6;
+    border-radius: 55px;
+    display: block;
+    margin-left: 500px;
+  }

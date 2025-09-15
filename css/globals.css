@@ -24,11 +24,9 @@ button{
 .container {
     margin: 0 auto;
     max-width: 1600px;
-    padding-top: 40px;
+    padding-top: 50px;
 }
-html, body {
-    overflow-x: hidden;
-}
+
   
 .default-button {
     background: #458FF6;
@@ -44,10 +42,24 @@ html, body {
 }
 .logo {
     height: 40px;
-    padding-left: 40px;
+    padding-left: 20px;
 }
+.logo img {
+    transition: 0.3s ease;
+}
+
+.logo img:hover {
+    filter: brightness(1.2); 
+
+
 .circles{
     height: 115px;
     padding-top: 63px;
 
+}
+footer{
+    overflow: hidden;
+}
+html, body {
+    overflow-x: hidden;
 }
