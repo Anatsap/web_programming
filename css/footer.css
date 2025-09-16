@@ -6,7 +6,7 @@
     font-size: 20px;
     position: relative;
     top:310px;
-    left: -150px;
+    left: 60px;
     z-index: 5;
 
 }
@@ -70,14 +70,17 @@
   }
 
 .default-button1.outlined {
+    padding-top: 10px;
     background: transparent;
     color: #458FF6;
     width: 200px;
-    height: 60px;
+    height: 40px;
     font-weight: 700;
     font-size: 18px;
     border: 1.4px solid #458FF6;
     border-radius: 55px;
     display: block;
     margin-left: 500px;
+    text-align: center;
+    cursor: pointer;
   }

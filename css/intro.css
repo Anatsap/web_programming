@@ -34,9 +34,20 @@
 .default-button.outlined{
     background: transparent;
     color:#458FF6;
-    width: 200px;
-    height: 58.74px;
+    width: 300px;
+    height: 70px;
+    size: 30px;
     border:1.4px solid #458FF6;
     border-radius: 55px;
-    margin-top: 36.22px;
+    margin-top: 100.22px;
+    padding-top: 20px;
+    cursor: pointer;
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-bottom: 20px;
+}
+.intro__button{
+    padding-top: 30px;
+    height: 100px;
+
 }

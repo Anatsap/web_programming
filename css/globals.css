@@ -28,6 +28,19 @@ button{
 }
 
   
+ .default-button {
+    background: #458FF6;
+    font-weight: 700;
+    border-radius: 55px;
+    color: #FFFFFF;
+    width: 200px;
+    height: 60px;
+    font-size: 18px;
+    top: 564px;
+    left: 190px;
+    padding: 3px 0;
+} 
+
 .default-button {
     background: #458FF6;
     font-weight: 700;
@@ -39,6 +52,10 @@ button{
     top: 564px;
     left: 190px;
     padding: 3px 0;
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-bottom: 20px;
+    padding-top: 20px;
 }
 .logo {
     height: 40px;
@@ -50,16 +67,17 @@ button{
 
 .logo img:hover {
     filter: brightness(1.2); 
-
+}
 
 .circles{
     height: 115px;
     padding-top: 63px;
 
 }
-footer{
-    overflow: hidden;
-}
+
 html, body {
     overflow-x: hidden;
+}
+footer{
+    overflow: hidden;
 }
