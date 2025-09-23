@@ -1,0 +1,100 @@
+body {
+    font-family: "Mulish", sans-serif;
+    color: #7D7987;
+    margin: 0;
+    padding: 0;
+}
+
+@media screen and (max-width: 768px){
+    body{
+        text-align: center;
+    } 
+}
+
+@media screen and (max-width: 450px){
+    :root{
+        font-size: 12px;
+    }
+    
+}
+.footer {
+    background-color: #458FF6;
+    height: 50px;
+  }
+  
+li {
+    display: block; 
+}
+
+p {
+    margin: 0;
+}
+a {
+    text-decoration: none;
+    color: #1F1534;
+}
+button{
+    border: 0;
+}
+
+.container {
+    width: 100%;       
+    max-width: 1200px; 
+    margin: 0 auto;     
+    padding: 0 1rem;   
+}
+@media screen and (max-width: 1024px) {
+    .container{
+        padding: 0 40px;
+    }
+}
+
+
+.default-button {
+    background: #458FF6;
+    font-weight: 700;
+    border-radius: 55px;
+    color: #FFFFFF;
+    width: 200px;
+    height: 60px;
+    font-size: 18px;
+    top: 564px;
+    left: 190px;
+    padding: 3px 0;
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-bottom: 20px;
+    padding-top: 20px;
+}
+
+.logo img {
+    transition: 0.3s ease;
+}
+
+.logo img:hover {
+    filter: brightness(1.2); 
+}
+.hero__img {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 1s ease-in, visibility 0s 1s;
+  }
+  
+.hero__img.visible {
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 1s ease-in, visibility 0s 0s;
+  }
+  
+.circles{
+    height: 115px;
+    padding-top: 63px;
+
+}
+
+html, body {
+    overflow-x: hidden;
+}
+footer{
+    overflow: hidden;
+}
