@@ -92,18 +92,18 @@
 
   .footer .logo2 {
     margin-left: 0;
-    width: 120px;
+    width: 100px;
     margin-bottom: -20px;
   }
 
   .footer__nav ul {
     flex-direction: row;
     gap: 1rem;
-    margin-top: -20px;
+    margin-top: -15px;
   }
 
   .footer__nav a {
-    font-size: 16px;
+    font-size: 13px;
   }
   .footer .blue_circles {
     position: absolute;
