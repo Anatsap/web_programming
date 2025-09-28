@@ -1,18 +1,32 @@
 ## Лабораторна роботи з дисципліни "Вебтехнології та вебдизайн"
 ## Виконала: Цапів Анастасія(IP-23)
-## Лабораторна робота №2 (варіант 4)
-Description: Improve a landing page following the given design (same as 
-previous) by adding full responsiveness and some animation.
+## Лабораторна робота №3 (варіант 4)
+3. CRUD Javascript App: View Page
+Description: In this work, you have to make a simple presentation part of 
+a website - View Page (You can find the template of the page by following the 
+link - https://wireframepro.mockflow.com/view/lviv-iot-crud-js-app
+For your blocks you must use data from your java/python project class.
+In case you don’t have a data from previous year, you should choose any 
+free task from this link:
+https://docs.google.com/document/d/1RW9PpalOlHn-
+nVIi8kbCr71vu_XLNsjj4TKpTdBnZ-w/edit?usp=sharing
+Then using JavaScript, you need to implement the following operations on 
+your data (it is up to you to decide which field should be used for each of 
+the operations):
+● Sort of your items option
+● Search option
+● Count total amount of some of the field
+(e.g total price of all cars)
 Requirements:
-● The website should be partly responsive:
-Required: for 320px (iPhone 5s)  2560px (4K screens).
-Hint: for extra-large screen width, you can just fit website content 
-inside a previously set container for the regular screen width and 
-centre it horizontally.
-● The header should collapse to a hamburger on small screens
-● The website must contain animations (at least 3). Can be made in 
-any possible way, preferably with css properties 
-(animation/transition).
-● Your project should be logically structured (all your CSS can’t be in 
-just one-two files)
-● All of the previous work requirements must be kept.
+● Responsiveness absolutely not required.
+● Styling is not important at all. Is up to you.
+Our recommendations and tips:
+● use JS Array methods: map(), sort(), filter(), reduce()
+● use native JS for any DOM operations (querySelector | findById | 
+insertAdjacentHTML | etc)
+● a website example      from live coding
+● Working with DOM & JS Array methods project
+https://github.com/bradtraversy/vanillawebprojects/tree/master/dom-array-
+methods
+● useful projects examples
+LIVE CODING LI
