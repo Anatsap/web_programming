@@ -39,9 +39,9 @@
     width: 100%;
     padding: 0.5rem 0.75rem 0.5rem 2.5rem; 
     border-radius: 9999px;
-    background-color: #452b52; 
+    background-color: #71358f; 
     border: none;
-    color: #452b52;
+    color: #ae96ba;
   }
   
   .search-icon {
@@ -49,7 +49,7 @@
     left: 0.75rem;
     top: 50%;
     transform: translateY(-50%);
-    color: #452b52;
+    color: #452953;
   }
   
 

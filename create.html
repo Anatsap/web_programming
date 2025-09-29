@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Form Validator</title>
+  </head>
+  <body>
+    <header>
+      <nav class="nav-bar">
+        <div class="container">
+          <a href="index.html" class="btn">← Back to All Cars</a>
+        </div>
+      </nav>
+    </header>
+    <main>
+      <h1>Create a New Car</h1>
+      <div>
+        <input id="brand" type="text" placeholder="Brand" class="w-full p-2 text-black" />
+        <input id="engine_power" type="number" placeholder="Engine power (hp)" class="w-full p-2 text-black" />
+        <input id="max_speed" type="number" placeholder="Max speed (km/h)" class="w-full p-2 text-black" />
+        <input id="img" type="text" placeholder="Image URL" class="w-full p-2 text-black" />
+        <input id="type" type="text" placeholder="Type (sedan, sport...)" class="w-full p-2 text-black" />
+        <input id="price" type="number" placeholder="Price" class="w-full p-2 text-black" />
+        <button id="createCarBtn" class="btn bg-blue-600 text-white px-4 py-2 rounded">Create Car</button>
+      </div>
+    </main>
+  
+    <script src="create.js"></script>
+  </body>
+</html>
