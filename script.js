@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
   function saveCars(arr) {
     localStorage.setItem('cars', JSON.stringify(arr));
   }
-
+  
   let cars = loadCars();
 
   const productsWrapperEl = document.getElementById('products-wrapper');
@@ -88,7 +88,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const productEl = document.createElement('div');
     productEl.className = 'item space-y-2';
 
-    const imgSrc = car.img || 'images/placeholder.svg'; 
+    const imgSrc = car.img || 'images/placeholder.svg';
     productEl.innerHTML = `
       <div class="bg-gray-100 flex justify-center relative overflow-hidden group cursor-pointer border">
         <img src="${imgSrc}" alt="${car.brand}" class="object-cover" />
@@ -99,14 +99,16 @@ document.addEventListener('DOMContentLoaded', () => {
       <p>Engine power: <strong>${car.engine_power} hp</strong></p>
       <p>Max speed: <strong>${car.max_speed} km/h</strong></p>
       <strong class="text-lg">$${Number(car.price).toLocaleString()}</strong>
+      <p><button class="delete-btn bg-purple-600 text-white px-3 py-1 rounded mt-2">Delete</button></p>
+
     `;
 
     const status = productEl.querySelector('.status');
     status.addEventListener('click', () => {
-      const index = cars.findIndex(c => 
-        c.brand === car.brand && 
-        c.engine_power === car.engine_power && 
-        c.max_speed === car.max_speed && 
+      const index = cars.findIndex(c =>
+        c.brand === car.brand &&
+        c.engine_power === car.engine_power &&
+        c.max_speed === car.max_speed &&
         c.price === car.price
       );
       if (index !== -1) {
@@ -114,14 +116,30 @@ document.addEventListener('DOMContentLoaded', () => {
         window.location.href = 'create.html';
       }
     });
-    
+    const deleteBtn = productEl.querySelector('.delete-btn');
+    deleteBtn.addEventListener('click', () => {
+      const index = cars.findIndex(c =>
+        c.brand === car.brand &&
+        c.engine_power === car.engine_power &&
+        c.max_speed === car.max_speed &&
+        c.price === car.price
+      );
+
+      if (index !== -1) {
+        cars.splice(index, 1); // видаляємо з масиву
+        saveCars(cars);        // оновлюємо localStorage
+        renderCars();          // перерендерюємо список
+      }
+    });
+
+
 
     return productEl;
   }
 
   function addNewCar(newCarObj) {
     const car = new Car(newCarObj.engine_power, newCarObj.brand, newCarObj.max_speed, newCarObj.img, newCarObj.type, newCarObj.price);
-    cars.unshift(car); 
+    cars.unshift(car);
     renderCars();
   }
 
