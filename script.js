@@ -1,4 +1,18 @@
+
 document.addEventListener('DOMContentLoaded', () => {
+  fetch('http://127.0.0.1:5000/cars')
+      .then(response => {
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        return response.json();
+      })
+      .then(data => {
+        console.log(data);
+      })
+      .catch(error => {
+        console.error('Error fetching data:', error);
+      });
 
   class Car {
     constructor(engine_power, brand, max_speed, img, type, price) {
@@ -37,7 +51,7 @@ document.addEventListener('DOMContentLoaded', () => {
   function saveCars(arr) {
     localStorage.setItem('cars', JSON.stringify(arr));
   }
-  
+
   let cars = loadCars();
 
   const productsWrapperEl = document.getElementById('products-wrapper');
@@ -125,10 +139,34 @@ document.addEventListener('DOMContentLoaded', () => {
         c.price === car.price
       );
 
+      const resourceIdToDelete = index;
+      const url = `http://127.0.0.1:5000/cars/${resourceIdToDelete}`;
+      fetch(url, {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      })
+        .then(response => {
+          if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+          }
+          if (response.status === 204) {
+            return null;
+          }
+          return response.json();
+        })
+        .then(data => {
+          console.log('Resource deleted successfully:', data);
+        })
+        .catch(error => {
+          console.error('Error deleting resource:', error);
+        });
+
       if (index !== -1) {
-        cars.splice(index, 1); // видаляємо з масиву
-        saveCars(cars);        // оновлюємо localStorage
-        renderCars();          // перерендерюємо список
+        cars.splice(index, 1);
+        saveCars(cars);
+        renderCars();
       }
     });
 
