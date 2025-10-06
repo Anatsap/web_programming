@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
     try {
       const raw = localStorage.getItem('cars');
       if (!raw) return defaultCars.slice();
-      const parsed = JSON.parse(raw);
+        const parsed = JSON.parse(raw);
       if (!Array.isArray(parsed)) return defaultCars.slice();
       return parsed.map(c => new Car(c.engine_power, c.brand, c.max_speed, c.img, c.type, c.price));
     } catch (e) {
