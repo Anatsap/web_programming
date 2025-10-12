@@ -1,206 +1,127 @@
+const API_URL = "http://127.0.0.1:5000/api/cars/";
+const TOTAL_PRICE_URL = "http://127.0.0.1:5000/api/cars/total_price/"; 
 
-document.addEventListener('DOMContentLoaded', () => {
-  fetch('http://127.0.0.1:5000/cars')
-      .then(response => {
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        return response.json();
-      })
-      .then(data => {
-        console.log(data);
-      })
-      .catch(error => {
-        console.error('Error fetching data:', error);
-      });
-
-  class Car {
-    constructor(engine_power, brand, max_speed, img, type, price) {
-      this.engine_power = Number(engine_power || 0);
-      this.brand = String(brand || '');
-      this.max_speed = Number(max_speed || 0);
-      this.img = img || '';
-      this.type = String(type || '').toLowerCase();
-      this.price = Number(price || 0);
-    }
-  }
-
-  const defaultCars = [
-    new Car(150, "Toyota", 220, "images/sedan.svg", "sedan", 25000),
-    new Car(300, "BMW", 280, "images/sport1.svg", "sport", 50000),
-    new Car(200, "Audi", 250, "images/sedan1.svg", "sedan", 40000),
-    new Car(300, "BMW", 280, "images/coupe1.svg", "coupe", 50000),
-    new Car(200, "Audi", 250, "images/suv1.svg", "suv", 40000),
-    new Car(180, "Ford", 200, "images/truck1.svg", "truck", 30000),
-    new Car(160, "Honda", 210, "images/minivan1.svg", "minivan", 27000),
-  ];
-
-  function loadCars() {
-    try {
-      const raw = localStorage.getItem('cars');
-      if (!raw) return defaultCars.slice();
-      const parsed = JSON.parse(raw);
-      if (!Array.isArray(parsed)) return defaultCars.slice();
-      return parsed.map(c => new Car(c.engine_power, c.brand, c.max_speed, c.img, c.type, c.price));
-    } catch (e) {
-      console.warn('Помилка читання cars з localStorage — використовую дефолтні', e);
-      return defaultCars.slice();
-    }
-  }
-
-  function saveCars(arr) {
-    localStorage.setItem('cars', JSON.stringify(arr));
-  }
-
-  let cars = loadCars();
-
-  const productsWrapperEl = document.getElementById('products-wrapper');
-  const sortSelect = document.getElementById('sort');
-  const totalPriceEl = document.getElementById('totalPrice');
-  const calculatePriceBtn = document.getElementById('calculatePriceBtn');
-  const searchInput = document.getElementById('search');
-  const filtersContainer = document.getElementById('filters-container');
-  const cartCount = document.getElementById('cartCount');
-
-  let cartItemCount = 0;
-
-  function getFilteredCars() {
-    const searchTerm = (searchInput?.value || '').trim().toLowerCase();
-    const checkedCategories = Array.from(filtersContainer?.querySelectorAll('input[type="checkbox"]:checked') || [])
-      .map(i => i.id.toLowerCase());
-
-    const filtered = cars.filter(car => {
-      const brandMatch = car.brand.toLowerCase().includes(searchTerm);
-      const categoryMatch = checkedCategories.length === 0 || checkedCategories.includes(car.type.toLowerCase());
-      return brandMatch && categoryMatch;
-    });
-
-    const sorted = filtered.slice();
-    const sortValue = sortSelect?.value;
-    if (sortValue === 'high') sorted.sort((a, b) => Number(b.price) - Number(a.price));
-    else if (sortValue === 'low') sorted.sort((a, b) => Number(a.price) - Number(b.price));
-
-    return sorted;
-  }
-
-  function renderCars() {
-    const list = getFilteredCars();
-    productsWrapperEl.innerHTML = '';
-
-    if (!list.length) {
-      productsWrapperEl.innerHTML = `<p class="text-center">No cars found.</p>`;
-      return;
-    }
-
-    list.forEach(car => {
-      const el = createProductElement(car);
-      productsWrapperEl.appendChild(el);
-    });
-  }
-
-  function createProductElement(car) {
-    const productEl = document.createElement('div');
-    productEl.className = 'item space-y-2';
-
-    const imgSrc = car.img || 'images/placeholder.svg';
-    productEl.innerHTML = `
-      <div class="bg-gray-100 flex justify-center relative overflow-hidden group cursor-pointer border">
-        <img src="${imgSrc}" alt="${car.brand}" class="object-cover" />
-        <span class="status bg-black text-white absolute bottom-0 left-0 right-0 text-center py-2 translate-y-full transition group-hover:translate-y-0">Edit</span>
-      </div>
-      <p class="text-xl font-semibold">${car.brand}</p>
-      <p>Type of car: <strong>${car.type}</strong></p>
-      <p>Engine power: <strong>${car.engine_power} hp</strong></p>
-      <p>Max speed: <strong>${car.max_speed} km/h</strong></p>
-      <strong class="text-lg">$${Number(car.price).toLocaleString()}</strong>
-      <p><button class="delete-btn bg-purple-600 text-white px-3 py-1 rounded mt-2">Delete</button></p>
-
+const productsWrapper = document.getElementById('products-wrapper');
+const searchInput = document.getElementById('search');
+const sortSelect = document.getElementById('sort');
+const filtersContainer = document.getElementById('filters-container');
+const calculatePriceBtn = document.getElementById('calculatePriceBtn');
+const totalPriceDiv = document.getElementById('totalPrice');
+function createCarCard(car) {
+    const card = document.createElement('div');
+    card.classList.add('p-4', 'text-white', 'flex', 'flex-col'); 
+    card.innerHTML = `
+        <img src="${car.img}" alt="${car.brand}" 
+        class="h-full w-full object-contain"
+        style="max-width: none;">
+        <h3 class="text-2xl font-bold text-white">${car.brand}</h3> 
+        <h3 class="text-xl font-bold">${car.type}</h3>
+        <p>Engine_power: ${car.engine_power} HP</p>
+        <p>Max_speed: ${car.max_speed} km/h</p>
+        <p class="text-lg text-white-400">Price: $${car.price.toFixed(2)}</p>
+        <div class="mt-20 flex justify-between">
+            <button class="bg-purple-700 hover:bg-purple-900 text-white font-bold py-2 px-4 rounded edit-btn" data-id="${car.id}">
+                Edit
+            </button>
+            <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded delete-btn" data-id="${car.id}">
+                Delete
+            </button>
+        </div>
     `;
 
-    const status = productEl.querySelector('.status');
-    status.addEventListener('click', () => {
-      const index = cars.findIndex(c =>
-        c.brand === car.brand &&
-        c.engine_power === car.engine_power &&
-        c.max_speed === car.max_speed &&
-        c.price === car.price
-      );
-      if (index !== -1) {
-        localStorage.setItem('editIndex', index);
-        window.location.href = 'create.html';
-      }
+    card.querySelector('.edit-btn').addEventListener('click', () => {
+        window.location.href = `create.html?id=${car.id}`; 
     });
-    const deleteBtn = productEl.querySelector('.delete-btn');
-    deleteBtn.addEventListener('click', () => {
-      const index = cars.findIndex(c =>
-        c.brand === car.brand &&
-        c.engine_power === car.engine_power &&
-        c.max_speed === car.max_speed &&
-        c.price === car.price
-      );
 
-      const resourceIdToDelete = index;
-      const url = `http://127.0.0.1:5000/cars/${resourceIdToDelete}`;
-      fetch(url, {
-        method: 'DELETE',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      })
-        .then(response => {
-          if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-          }
-          if (response.status === 204) {
-            return null;
-          }
-          return response.json();
+    card.querySelector('.delete-btn').addEventListener('click', () => deleteCar(car.id));
+
+    return card;
+}
+function getQueryParams() {
+    const sort = sortSelect.value;
+    const checkedTypes = Array.from(filtersContainer.querySelectorAll('input:checked'))
+        .map(input => input.id)
+        .join(',');
+    const search = searchInput.value.trim();
+
+    const params = new URLSearchParams();
+    if (sort) params.append('sort', sort);
+    if (checkedTypes) params.append('type', checkedTypes);
+    if (search) params.append('search', search);
+    
+    return params;
+}
+function loadCars() {
+    productsWrapper.innerHTML = '<p class="text-center">...</p>';
+    
+    const params = getQueryParams();
+    const url = `${API_URL}?${params.toString()}`;
+
+    fetch(url)
+        .then(res => {
+            if (res.status === 404) return [];
+            if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
+            return res.json();
         })
         .then(data => {
-          console.log('Resource deleted successfully:', data);
+            productsWrapper.innerHTML = '';
+            if (data.length === 0) {
+                productsWrapper.innerHTML = '<p class="text-center text-xl mt-10">Cars not found</p>';
+                return;
+            }
+            const grid = document.createElement('div');
+            grid.classList.add('grid', 'grid-cols-1', 'gap-10', 'mt-30'); 
+            
+            data.forEach(car => {
+                grid.appendChild(createCarCard(car));
+            });
+            productsWrapper.appendChild(grid);
         })
-        .catch(error => {
-          console.error('Error deleting resource:', error);
+        .catch(err => {
+            console.error('Error fetching cars:', err);
+            productsWrapper.innerHTML = `<p class="text-center text-xl mt-10 text-red-400">Помилка завантаження даних: ${err.message}</p>`;
         });
+}
 
-      if (index !== -1) {
-        cars.splice(index, 1);
-        saveCars(cars);
-        renderCars();
-      }
-    });
+function deleteCar(id) {
+    fetch(`${API_URL}${id}`, {
+        method: 'DELETE'
+    })
+    .then(res => {
+        if (res.status === 204 || res.ok) {
+            loadCars(); 
+        } else {
+            return res.json().then(data => { throw new Error(data.message || 'Failed to delete'); });
+        }
+    })
+    .catch(err => console.error('Error deleting car:', err));
+}
 
+function calculateTotalPrice() {
+    
+    const params = getQueryParams();
+    const url = `${TOTAL_PRICE_URL}?${params.toString()}`;
 
+    fetch(url)
+        .then(res => res.json())
+        .then(data => {
+            const total = data.total_price;
+            totalPriceDiv.innerHTML = `Total price of car: <span class="text-yellow-400 font-bold">$${total.toFixed(2)}</span>`;
+        })
+        .catch(err => {
+            console.error('Error calculating total price:', err);
+            totalPriceDiv.innerHTML = '<span class="text-red-400">Error</span>';
+        });
+}
 
-    return productEl;
-  }
-
-  function addNewCar(newCarObj) {
-    const car = new Car(newCarObj.engine_power, newCarObj.brand, newCarObj.max_speed, newCarObj.img, newCarObj.type, newCarObj.price);
-    cars.unshift(car);
-    renderCars();
-  }
-
-  function calculatePrice() {
-    const filtered = getFilteredCars();
-    const total = filtered.reduce((acc, c) => acc + Number(c.price || 0), 0);
-    totalPriceEl.innerHTML = `<h3>Total price of cars: <strong>${formatMoney(total)}</strong></h3>`;
-  }
-
-  function formatMoney(amount) {
-    return '$' + Number(amount || 0).toLocaleString();
-  }
-
-  if (sortSelect) sortSelect.addEventListener('change', renderCars);
-  if (searchInput) searchInput.addEventListener('input', renderCars);
-  if (filtersContainer) filtersContainer.addEventListener('change', renderCars);
-  if (calculatePriceBtn) calculatePriceBtn.addEventListener('click', calculatePrice);
-
-  renderCars();
-
-  window.appCars = {
-    addNewCar,
-    reloadCars: () => { cars = loadCars(); renderCars(); }
-  };
-
+sortSelect.addEventListener('change', loadCars);
+filtersContainer.addEventListener('change', loadCars);
+let searchTimeout;
+searchInput.addEventListener('input', () => {
+    clearTimeout(searchTimeout);
+    searchTimeout = setTimeout(loadCars, 300); 
 });
+
+calculatePriceBtn.addEventListener('click', calculateTotalPrice);
+
+document.addEventListener('DOMContentLoaded', loadCars);
