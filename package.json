@@ -1,0 +1,43 @@
+{
+  "name": "web_programming",
+  "version": "1.0.0",
+  "description": "Description: Start creating your React App with a simple Home page (see  the link to wireframe above). Your e-commerce app subject is about your  entities from previous (3-5) works. Variants -  (products that you are ‘selling’) the same as for previous works. (see the description to 3rd work) Requirements: ● You have to use only React.js library for all of your mark-up. Which  means - your index.html file shouldn’t be touched. ● Use create-react-app tool for creating base of your project https://github.com/facebook/create-react-app ● Your Home page should follow the wireframe, i.e all of the elements ( header, navigation, footer etc. ) from wireframes must be presented on your website. ● Design: You have to use CSS styling or/and component libraries.  Don't overthink it, use your imagination for UI, BUT the work with  almost no styling is unacceptable. ● Functionality: For this work nothing but view only part is required.  Any interaction (links/buttons) is not necessary, but you will have to  complete them in your next labs. ● Code style: ○ Project structure: Your UI elements should be logically  separated into React components (one file for each component) - at least 5 component files are required. In other words, you  can’t just put all your JSX into 1-2 files. ○ Use Functional components instead of Class components https://uk.reactjs.org/docs/components-and-props.html LIVE CODING LINK (YouTube video)",
+  "main": "index.js",
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Anatsap/web_programming.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Anatsap/web_programming/issues"
+  },
+  "homepage": "/Anatsap/web_programming",
+  "dependencies": {
+    "antd": "^5.27.5",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "react-router-dom": "^7.9.4",
+    "react-scripts": "^5.0.1",
+    "styled-components": "^6.1.19"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}

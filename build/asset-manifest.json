@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/Anatsap/web_programming/static/css/main.7ba2f890.css",
+    "main.js": "/Anatsap/web_programming/static/js/main.10478db2.js",
+    "index.html": "/Anatsap/web_programming/index.html",
+    "main.7ba2f890.css.map": "/Anatsap/web_programming/static/css/main.7ba2f890.css.map",
+    "main.10478db2.js.map": "/Anatsap/web_programming/static/js/main.10478db2.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.7ba2f890.css",
+    "static/js/main.10478db2.js"
+  ]
+}
