@@ -4,27 +4,24 @@ import Icon, {
     TwitterOutlined,
     InstagramOutlined,
     LinkedinOutlined,
-    YoutubeOutlined,
-    AliwangwangOutlined
+    YoutubeOutlined
   } from "@ant-design/icons";
-
+  import Logo from "../../../Icons/whiteLogo.svg";
 const Footer = () => {
   return (
     <Wrapper>
       <LogoWrapper>
-        <IconBase component={AliwangwangOutlined} />
-        <h1>Glay Shop</h1>
+      <img src={Logo} alt="Logo" style={{ height: '24px' }} />
       </LogoWrapper>
-      <p>Fashion is popular <br />aesthetic expression at a particular time, place and in a specific context, especially in <br />clothing, footwear, lifestyle, accessories, makeup.</p>
-      <VerticalLine />
+      <p>Follow us</p>
       <IconsWrapper>
           <IconBase component={YoutubeOutlined} color='#FF0000'/>
           <IconBase component={TwitterOutlined} color='#03A9F4' />
           <IconBase component={LinkedinOutlined} color='#007AB9'/>
-          <IconBase component={InstagramOutlined} color='#3A9F4'/>
+          <IconBase component={InstagramOutlined} color='#ffffff'/>
       </IconsWrapper>
-      <VerticalLine />
-      <StyledText>© Clay Shop all rights reserved</StyledText>
+      <StyledText>CEIN. 2019 KINS All rights reserved.</StyledText>
+      
     </Wrapper>
   );
 };

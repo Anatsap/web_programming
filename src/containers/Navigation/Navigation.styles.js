@@ -16,7 +16,7 @@ ul {
     list-style-type:none;
     display: flex;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: center;
     margin: 0;
 }
 

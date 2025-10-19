@@ -8,22 +8,13 @@ import {
   FacebookOutlined,
   AliwangwangOutlined,
 } from "@ant-design/icons";
+import Logo from "../../../Icons/Logo.svg";
 
 const Layout = () => (
   <StyledHeader title="Glay Shop">
     <div>
       <IconsWrapper>
-        <AliwangwangOutlined />
-      </IconsWrapper>
-      <p>Glay Shop</p>
-    </div>
-    <div>
-      <IconsWrapper>
-        <TwitterOutlined />
-
-        <FacebookOutlined />
-
-        <InstagramOutlined />
+        <img src={Logo} alt="Logo Cein" style={{ height: '20px' }} />
       </IconsWrapper>
     </div>
     <div>

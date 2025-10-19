@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const StyledHeader = styled.div`
     padding: 16px 20px 4px;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     width: 100%;
     table-layout: fixed;
     border-spacing: 10px;
@@ -20,7 +20,7 @@ export const StyledHeader = styled.div`
 
 export const IconsWrapper = styled.div`
     display: flex;
-    > span {
-        margin: 0 12px;
+    > span, img {
+        margin: 0 50px;
     }
 `
