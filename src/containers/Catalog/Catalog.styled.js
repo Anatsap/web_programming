@@ -38,15 +38,3 @@ export const CardWrapper = styled.div`
     width: 100%;
     margin-top: 20px;
 `
-export const ButtonContainer = styled.div`
-    display: flex;
-    justify-content: center;
-    margin: 40px 0;
-`;
-export const StyledButton1 = styled(Button)`
-    background: transparent;
-    border-radius: 0px;
-    color: black;
-    margin: 20px 20px;   
-    display: block;    
-`;

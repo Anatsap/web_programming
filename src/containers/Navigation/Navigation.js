@@ -2,6 +2,7 @@
 import { Routes, Route, NavLink } from 'react-router-dom';
 import { LinkingWrapper } from './Navigation.styles';
 import Home from '../Home/Home';
+import Catalog from '../Catalog/Catalog';
 
 const Navigation = () => (
   <LinkingWrapper>
@@ -14,11 +15,11 @@ const Navigation = () => (
           end 
         >
           Shop
-        </NavLink>
+        </NavLink>1
       </li>
       {}
       <li>
-        <NavLink to="/shop" className={({ isActive }) => (isActive ? 'selected' : '')}>About us</NavLink>
+        <NavLink to="/Catalog" className={({ isActive }) => (isActive ? 'selected' : '')}>Catalog</NavLink>
       </li>
       <li>
         <NavLink to="/blog" className={({ isActive }) => (isActive ? 'selected' : '')}>Journal</NavLink>
@@ -30,7 +31,7 @@ const Navigation = () => (
 
     <Routes> {}
       {}
-      <Route path="/shop" element={<div>Hello it is about us</div>} />
+      <Route path="/catalog" element={<Catalog/>} />
       <Route path="/blog" element={<div>Hello it is journal</div>} />
       <Route path="/contact" element={<div>Hello it is stores</div>} />
 
