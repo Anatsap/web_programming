@@ -1,10 +1,11 @@
 import React from "react";
 import { Card, Button } from "antd";
 import { Footer } from "./CardCatalog.styled";
-
+import product from "../../containers/ProductDetails/ProductDetails";
+import { Link } from "react-router-dom";
 const { Meta } = Card;
 
-const CardCatalog = ({ title='No title.', text, imageSrc, price }) => (
+const CardCatalog = ({id, title='No title.', text, imageSrc, price }) => (
   <Card
     hoverable
     cover={
@@ -14,7 +15,9 @@ const CardCatalog = ({ title='No title.', text, imageSrc, price }) => (
     <Meta title={title} description={text} />
     <Footer>
       <p>${price}</p>
-      <Button>Show More</Button>
+      <Link to={`/product/${id}`}>
+        <button>Show More</button>
+      </Link>
     </Footer>
   </Card>
 );

@@ -3,6 +3,7 @@ import { Routes, Route, NavLink } from 'react-router-dom';
 import { LinkingWrapper } from './Navigation.styles';
 import Home from '../Home/Home';
 import Catalog from '../Catalog/Catalog';
+import ProductDetails from '../ProductDetails/ProductDetails';
 
 const Navigation = () => (
   <LinkingWrapper>
@@ -32,6 +33,7 @@ const Navigation = () => (
     <Routes> {}
       {}
       <Route path="/catalog" element={<Catalog/>} />
+      <Route path="/product/:id" element={<ProductDetails />} />
       <Route path="/blog" element={<div>Hello it is journal</div>} />
       <Route path="/contact" element={<div>Hello it is stores</div>} />
 
