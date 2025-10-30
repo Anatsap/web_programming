@@ -1,9 +1,6 @@
-from math import sin, pi
+
 import numpy as np
-import os
-path = '/home/atsap/web_programming/rezult.dat'
-if os.path.exists(path):
-    os.remove(path)
+
 R1 = 10
 R2 = 20
 R3 = 50
@@ -17,7 +14,6 @@ h = T/400
 N = int(5 * T / h)
 U1 = 0
 U10 = 0
-b = [0.0, 0.0, 0.0]
 
 x_old = [0.0, 0.0, 0.0] 
 x_new = x_old.copy() 
@@ -80,11 +76,12 @@ def sol():
         x_old[1] = x_new[1]
         x_old[2] = x_new[2]
         t = t + h
+        U1_now = get_U1(t)
         if step % 4 == 0:
-            rezults.append([t, x_new[0], x_new[1], x_new[2]])
+            rezults.append([t, U1_now, x_new[0], x_new[1], x_new[2]])
         else:
             continue
-        print(f"Step {step+1}: t : {t}, x = {x_new}")
+        print(f"Step {step+1}: t = {t:.6f}, U1 = {U1_now}, UC1 = {x_new[0]}, UC3 = {x_new[1]}, UC2 = {x_new[2]}")
     return rezults
 
 with open("rezult.dat", "w") as file:
