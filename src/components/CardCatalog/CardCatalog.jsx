@@ -9,7 +9,7 @@ const CardCatalog = ({id, title='No title.', text, imageSrc, price }) => (
   <Card
     hoverable
     cover={
-      <img style={{ borderRadius: "20px" }} alt="example" src={imageSrc} />
+      <img style={{ borderRadius: "20px" }} alt={product.title} src={product.image} />
     }
   >
     <Meta title={title} description={text} />

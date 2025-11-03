@@ -64,6 +64,7 @@ if (error) return <div>Error: {error.message || error}</div>;
     };
     if (activeFilters.priceRange === 'Low') {
       filtered = filtered.filter(item => item.price <= 50);
+      // priceRange == 'Low';
     } else if (activeFilters.priceRange === 'Medium') {
       filtered = filtered.filter(item => item.price > 50 && item.price <= 200);
     }
@@ -77,11 +78,17 @@ if (error) return <div>Error: {error.message || error}</div>;
        <Layout onSearchChange={setSearchTerm} />
        <FilterWrapper>
         <h3>Price Range: </h3>
-        <select onChange={(e) => setActiveFilters({ ...activeFilters, priceRange: e.target.value })}>
+        <select
+          value={activeFilters.priceRange}
+          onChange={(e) =>
+            setActiveFilters({ ...activeFilters, priceRange: e.target.value })
+          }
+        >
           <option value="Any">Any</option>
           <option value="Low">Low (0-50)</option>
           <option value="Medium">Medium (51-200)</option>
         </select>
+
         </FilterWrapper>
       <CardWrapper
         style={{

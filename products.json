@@ -4,7 +4,7 @@
         "id": 1,
         "title": "Pure Micellar Cleansing Water",
         "text": "Gentle micellar water",
-        "image": "Product1.svg",
+        "image": "http://localhost:5000/Icons/product1.svg",
         "price": 32,
         "description": "Deeply cleanses skin without irritation, suitable for sensitive types."
       },

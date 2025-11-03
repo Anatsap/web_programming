@@ -13,7 +13,7 @@ function gparametrs(chosen) {
     const parametrs = {};
     if(search){
     parametrs.search = search;
-    }if(priceRange && priceRange !== 'Any'){
+    }if(priceRange){
     parametrs.priceRange = priceRange;
     }
     return parametrs;
