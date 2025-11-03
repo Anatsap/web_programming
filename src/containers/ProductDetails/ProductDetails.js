@@ -1,18 +1,31 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
-import products from "../Products";
+import get_product from "../../api/getProduct";
+
 const ProductDetails = () => {
   const { id } = useParams();
-  const product = products.find(p => p.id === Number(id));
-  if (!product) return <p>Product not found</p>;
+  const [data, setData] = useState()
+  const [error, setError] = useState()
+  const [loading, setLoading] = useState(true)
+  useEffect(() => {
+        get_product({
+            id: Number(id),
+            setData: setData,
+            setError: setError,
+            setLoading: setLoading
+        })
+    }, [id])
+    if (loading) return <p>Loading...</p>;
+    if (error) return <p>Error: {error.message || error}</p>;
+    if (!data) return <p>Product not found</p>;
 
   return (
-    <div key={product.id} style={{ padding: "40px", textAlign: "center" }}>
-      <img src={product.image} alt={product.title} style={{ width: "300px", borderRadius: "15px" }} />
-      <h1>{product.title}</h1>
-      <p>{product.text}</p>
-      <p>{product.description}</p>
-      <p><strong>Price: ${product.price}</strong></p>
+    <div key={data.id} style={{ padding: "40px", textAlign: "center" }}>
+      <img src={data.image} alt={data.title} style={{ width: "300px", borderRadius: "15px" }} />
+      <h1>{data.title}</h1>
+      <p>{data.text}</p>
+      <p>{data.description}</p>
+      <p><strong>Price: ${data.price}</strong></p>
       <Link to="/catalog">
         <button style={{
           marginTop: "20px",

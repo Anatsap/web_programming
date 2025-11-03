@@ -1,7 +1,9 @@
+import axios from "axios";
 import React, {useState, useEffect, Fragment} from "react";
+import getActivity from "../../api/getProducts";
 import Header from "../../Icons/image.svg";
 import Layout  from "../App/Layout/Layout";
-import products from "../Products";
+
 
 import {
   SectionWrapper,
@@ -12,15 +14,49 @@ import {
   StyledText1,
 } from "./Catalog.styled";
 import CardCatalog from "../../components/CardCatalog/CardCatalog";
+
+
 const Catalog = () => {
+  const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null); 
   const [searchTerm, setSearchTerm] = useState("");
+  const [products, setProducts] = useState([]);
   const [activeFilters, setActiveFilters] = useState({
   priceRange: 'Any',
 });
 
+useEffect(() => {
+  axios.get("/products")
+    .then(res => setProducts(res.data))
+    .catch(err => console.error("Error :", err));
+}, []);
+
+
+useEffect(() => {
+  getActivity({
+    chosen: { search: searchTerm, priceRange: activeFilters.priceRange },
+    setData,
+    setLoading,
+    setError,
+  });
+}, [searchTerm, activeFilters.priceRange]);
+
+if (loading) return <div>Loading...</div>;
+if (error) return <div>Error: {error.message || error}</div>;
+
+// useEffect(() => {
+//   const fetchData = async() => {
+//     let response = await getActivity();
+//     setData(response.data);
+//     setLoading(false);
+//     setError(null)
+//   };
+//   fetchData();
+// }, []);
   const getFilteredData = () => {
     const term = searchTerm.trim().toLowerCase();
-    let filtered = products;
+    let filtered = data;
     if(term){
       filtered = filtered.filter((item) =>
       item.title.toLowerCase().includes(term)
