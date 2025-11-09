@@ -4,8 +4,11 @@ import { LinkingWrapper } from './Navigation.styles';
 import Home from '../Home/Home';
 import Catalog from '../Catalog/Catalog';
 import ProductDetails from '../ProductDetails/ProductDetails';
+import { Provider } from "react-redux";
+import Checkout from '../../Checkout';
 
 const Navigation = () => (
+
   <LinkingWrapper>
     <ul>
       <li>
@@ -16,7 +19,7 @@ const Navigation = () => (
           end 
         >
           Shop
-        </NavLink>1
+        </NavLink>
       </li>
       {}
       <li>
@@ -36,11 +39,12 @@ const Navigation = () => (
       <Route path="/product/:id" element={<ProductDetails />} />
       <Route path="/blog" element={<div>Hello it is journal</div>} />
       <Route path="/contact" element={<div>Hello it is stores</div>} />
-
+      <Route path="/checkout" element={<Checkout/>} />
       {}
       <Route path="/" element={<Home />} />
     </Routes>
   </LinkingWrapper>
+
 );
 
 export default Navigation;

@@ -1,20 +1,18 @@
 import React, {useState} from "react";
 import { StyledHeader, IconsWrapper } from "./Layout.styles";
 import {
-  TwitterOutlined,
   SearchOutlined,
   ShoppingCartOutlined,
-  InstagramOutlined,
-  FacebookOutlined,
-  AliwangwangOutlined,
 } from "@ant-design/icons";
 import Logo from "../../../Icons/Logo.svg";
+import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 const Layout = ({ onSearchChange }) => {
   const handleSearchChange = (e) => {
     onSearchChange(e.target.value);
   };
-
+  const cartItems = useSelector(state => state.cart.cart)
 return (
   <StyledHeader title="Cein">
     <div>
@@ -40,8 +38,22 @@ return (
     <div>
       <IconsWrapper>
         <SearchOutlined />
-
+        <Link to="/checkout">
         <ShoppingCartOutlined />
+        <small 
+        style={{
+          position: 'absolute',
+          top: '90px',
+          right: '35px',
+          background: 'red',
+          borderRadius: '50%',
+          padding: '2px 6px',
+          color: 'white'
+        }}
+        >
+        {cartItems.length}
+        </small>
+        </Link>
       </IconsWrapper>
     </div>
   </StyledHeader>
