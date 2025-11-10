@@ -11,7 +11,7 @@ function Checkout() {
       <h2 className="checkout-title">Cart items</h2>
 
       {cartitems.length === 0 ? (
-        <p style={{ textAlign: "center", color: "#888" }}>Your cart is empty </p>
+        <p style={{ textAlign: "center", color: "#888" }}>Cart is empty </p>
       ) : (
         cartitems.map((item) => (
           <div className="cart-item" key={item.id}>

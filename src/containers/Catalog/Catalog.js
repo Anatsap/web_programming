@@ -45,15 +45,6 @@ useEffect(() => {
 if (loading) return <div>Loading...</div>;
 if (error) return <div>Error: {error.message || error}</div>;
 
-// useEffect(() => {
-//   const fetchData = async() => {
-//     let response = await getActivity();
-//     setData(response.data);
-//     setLoading(false);
-//     setError(null)
-//   };
-//   fetchData();
-// }, []);
   const getFilteredData = () => {
     const term = searchTerm.trim().toLowerCase();
     let filtered = data;
@@ -64,7 +55,6 @@ if (error) return <div>Error: {error.message || error}</div>;
     };
     if (activeFilters.priceRange === 'Low') {
       filtered = filtered.filter(item => item.price <= 50);
-      // priceRange == 'Low';
     } else if (activeFilters.priceRange === 'Medium') {
       filtered = filtered.filter(item => item.price > 50 && item.price <= 200);
     }
