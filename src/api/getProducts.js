@@ -2,9 +2,6 @@ import axios from 'axios'
 
 const BASE_URL = 'http://localhost:5000'
 
-// const response = await axios.get(`${BASE_URL}/products`);
-// setData(response.data);
-
 function gparametrs(chosen) {
     if (chosen === undefined) {
         return undefined
