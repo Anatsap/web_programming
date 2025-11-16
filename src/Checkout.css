@@ -68,3 +68,15 @@
     transform: scale(1.05);
   }
   
+  .order-btn {
+    background-color: #6de059;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    margin-left: 5px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-weight: bold;
+
+  }

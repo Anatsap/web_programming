@@ -6,6 +6,8 @@ import Catalog from '../Catalog/Catalog';
 import ProductDetails from '../ProductDetails/ProductDetails';
 import { Provider } from "react-redux";
 import Checkout from '../../Checkout';
+import { Order } from '../../cart_pages/Order';
+import Success from '../../cart_pages/Success'
 
 const Navigation = () => (
 
@@ -40,6 +42,8 @@ const Navigation = () => (
       <Route path="/blog" element={<div>Hello it is journal</div>} />
       <Route path="/contact" element={<div>Hello it is stores</div>} />
       <Route path="/checkout" element={<Checkout/>} />
+      <Route path="/order" element={<Order/>} />
+      <Route path="/success" element={<Success/>} />
       {}
       <Route path="/" element={<Home />} />
     </Routes>

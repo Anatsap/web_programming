@@ -1,6 +1,8 @@
 import './Checkout.css';
 import { useSelector, useDispatch } from "react-redux";
 import { removefromCart } from "./redux/cartSlice";
+import Order from './cart_pages/Order';
+import {Link} from 'react-router-dom';
 
 function Checkout() {
   const cartitems = useSelector((state) => state.cart.cart);
@@ -27,8 +29,16 @@ function Checkout() {
               Remove
             </button>
           </div>
+
         ))
       )}
+            <Link to={`/order`}>
+            <button
+              className="order-btn"
+            >
+              Proceed to order
+            </button>
+            </Link>
     </div>
   );
 }
