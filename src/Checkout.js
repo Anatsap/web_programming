@@ -1,6 +1,6 @@
 import './Checkout.css';
 import { useSelector, useDispatch } from "react-redux";
-import { removefromCart } from "./redux/cartSlice";
+import { addtoCart, removefromCart, updateItemQuantity, updateCartPrices } from "./redux/cartSlice";
 
 function Checkout() {
   const cartitems = useSelector((state) => state.cart.cart);
@@ -22,9 +22,27 @@ function Checkout() {
             </div>
             <button
               className="remove-btn"
-              onClick={() => dispatch(removefromCart({ id: item.id }))}
+              onClick={() => dispatch(addtoCart({ id: item.id, quantity: item.quantity + 1 }))}
+            >
+              Add
+            </button>
+            <button
+              className="remove-btn"
+              onClick={() => dispatch(removefromCart({ id: item.id, quantity: item.quantity - 1 }))}
             >
               Remove
+            </button>
+            <button
+              className="update"
+              onClick={() => dispatch(updateItemQuantity({item: item.id, quantity: item.quantity}))}
+            >
+              +1
+            </button>
+            <button
+              className="price"
+              onClick={() => dispatch(updateCartPrices({item: item.id}))}
+            >
+              Total price
             </button>
           </div>
         ))
