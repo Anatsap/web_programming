@@ -5,17 +5,21 @@ import Error  from './ErrorMessage';
 import {Link, useNavigate} from 'react-router-dom';
 import {Header, Fields} from './Order.styled';
 import axios from 'axios';
-const BASE_URL = 'http://localhost:5000';
-
+const BASE_URL = 'http://localhost:5001';
+import products from '../../products.json';
+import Success from "./Success";
+import { send_email } from '../'
 
 const ValidationSchema = yup.object().shape({
     first_name: yup
     .string()
-    .min(1, "Please enter last name more than 1 character")
+    .trim()
+    .min(3, "Please enter last name more than 3 characters")
     .required("This field is required"),
     last_name: yup
     .string()
-    .min(1, "Please enter last name more than 1 character")
+    .trim()
+    .min(3, "Please enter last name more than 3 characters")
     .required("This field is required"),
     email: yup
     .string()
@@ -23,14 +27,18 @@ const ValidationSchema = yup.object().shape({
     .required("Email is required"),
     phone: yup
     .string()
-    .matches(/^[0-9]{9}$/, "Phone must contain exactly 9 digits")
+    .matches(/^\d+$/, "Phone must contain only digits")
+    .min(9)
+    .max(13)
     .required("This field is required"),
     subject: yup
     .string()
+    .trim()
     .min(1, "Please enter subject more than 1 character")
     .required("This field is required"),
     msg: yup
     .string()
+    .trim()
     .min(1, "Please enter message more than 1 character")
     .required("This field is required"),
  });
@@ -72,32 +80,24 @@ export const Order = () => {
             //     return errors
             //   }}
             validationSchema={ValidationSchema}
-            onSubmit ={ async (values, actions) => {
-                actions.setSubmitting(true)
-                // const response = await api.post('/send_email', {
-                //   name: values.name,
-                //   email: values.email,
-                //   subject: values.subject,
-                //   msg: values.msg
-                // })
-                await new Promise((resolve) => setTimeout(resolve, 1000));
-
-                // імітуємо відповідь сервера
-                const response = { status: 200, data: { message: 'Email sent!' } };
-              
-                if (response.status === 200) {
-                  actions.setStatus({ success: response.data.message });
-                  actions.resetForm();
-                  navigate('/success');
-                } else {
-                  actions.setStatus({ success: 'Something went wrong!' });
+            onSubmit={async (values, actions) => {
+                actions.setSubmitting(true);
+                try {
+                    await new Promise((resolve) => setTimeout(resolve, 1000));
+                    const response = await axios.post(`${BASE_URL}/send_email`, values);
+                    if (response.status === 200) {
+                        actions.setStatus({ success: response.data.message || 'Email sent!' });
+                        actions.resetForm();
+                        navigate('/success');
+                    } else {
+                        actions.setStatus({ success: 'Something went wrong!' });
+                    }
+                } catch (err) {
+                    actions.setStatus({ success: 'Something went wrong!' });
+                } finally {
+                    actions.setSubmitting(false);
                 }
-              
-                actions.setSubmitting(false);
-              
-                // console.log('ok')
-                // console.log('response: ', response)
-            }}
+            }}            
             >
             {({errors, touched, isSubmitting, status }) => (
                 <Form>
@@ -126,11 +126,9 @@ export const Order = () => {
                     <Field component='textarea' name='msg' placeholder='Your message' />
                     {errors.msg && touched.msg ? (<Error message={errors.msg} />) : null}
                 </div>
-                <div className="email-item">
                 {/* <button type='submit' disabled={isSubmitting}>Submit</button> */}
-                    <Link to={`/success`}>
-                    <button type='submit' disabled={isSubmitting}>Submit</button>
-                    </Link>
+                <div className="email-item">
+                    <button type="submit" disabled={isSubmitting}>Submit</button>
                 </div>
                 {status && status.success && <div>{status.success}</div>}
                 </Fields>

@@ -1,13 +1,11 @@
 import './Checkout.css';
 import { useSelector, useDispatch } from "react-redux";
-import { removefromCart } from "./redux/cartSlice";
-import Order from './cart_pages/Order';
-import {Link} from 'react-router-dom';
+import { addtoCart, removefromCart, increment, decrement} from "./redux/cartSlice";
+import Subtotal from './redux/SubTotal';
 
 function Checkout() {
   const cartitems = useSelector((state) => state.cart.cart);
   const dispatch = useDispatch();
-
   return (
     <div className="checkout-container">
       <h2 className="checkout-title">Cart items</h2>
@@ -21,24 +19,29 @@ function Checkout() {
             <div className="cart-details">
               <h4>{item.title}</h4>
               <p>${item.price}</p>
+              <p>{item.package}</p>
             </div>
             <button
               className="remove-btn"
-              onClick={() => dispatch(removefromCart({ id: item.id }))}
+              onClick={() => dispatch(removefromCart({ id: item.id, quantity: item.quantity - 1 }))}
             >
               Remove
             </button>
+            <div class="counter">
+              <button id="decrease"
+              onClick={() => dispatch(decrement(item.id))}
+              >-</button>
+              <div class="count">{item.quantity}</div>
+              <button id="increase"
+              onClick={() => dispatch(increment(item.id))}
+              >+</button>
+            </div>
           </div>
-
         ))
       )}
-            <Link to={`/order`}>
-            <button
-              className="order-btn"
-            >
-              Proceed to order
-            </button>
-            </Link>
+      <div className='subtotal'>
+      <Subtotal />
+      </div>
     </div>
   );
 }
