@@ -1,0 +1,13 @@
+.subtotal{
+    margin-top: 10px;
+}
+
+.subtotal_area {
+    padding: 10px;
+    border: 1px solid gray;
+    background-color: rgb(221, 221, 222);
+}
+.subtotal .subtotal_area button{
+    background-color: orange;
+    border: 1px solid gray;
+}

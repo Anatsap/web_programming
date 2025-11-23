@@ -1,10 +1,13 @@
 import './Checkout.css';
 import { useSelector, useDispatch } from "react-redux";
-import { addtoCart, removefromCart, updateItemQuantity, updateCartPrices } from "./redux/cartSlice";
+import { addtoCart, removefromCart, increment, decrement} from "./redux/cartSlice";
+import Subtotal from './redux/SubTotal';
 
 function Checkout() {
   const cartitems = useSelector((state) => state.cart.cart);
   const dispatch = useDispatch();
+
+  // const counter = useSelector((state) => state.counter.value);
 
   return (
     <div className="checkout-container">
@@ -19,34 +22,29 @@ function Checkout() {
             <div className="cart-details">
               <h4>{item.title}</h4>
               <p>${item.price}</p>
+              <p>{item.package}</p>
             </div>
-            <button
-              className="remove-btn"
-              onClick={() => dispatch(addtoCart({ id: item.id, quantity: item.quantity + 1 }))}
-            >
-              Add
-            </button>
             <button
               className="remove-btn"
               onClick={() => dispatch(removefromCart({ id: item.id, quantity: item.quantity - 1 }))}
             >
               Remove
             </button>
-            <button
-              className="update"
-              onClick={() => dispatch(updateItemQuantity({item: item.id, quantity: item.quantity}))}
-            >
-              +1
-            </button>
-            <button
-              className="price"
-              onClick={() => dispatch(updateCartPrices({item: item.id}))}
-            >
-              Total price
-            </button>
+            <div class="counter">
+              <button id="decrease"
+              onClick={() => dispatch(decrement(item.id))}
+              >-</button>
+              <div class="count">{item.quantity}</div>
+              <button id="increase"
+              onClick={() => dispatch(increment(item.id))}
+              >+</button>
+            </div>
           </div>
         ))
       )}
+      <div className='subtotal'>
+      <Subtotal />
+      </div>
     </div>
   );
 }
