@@ -50,27 +50,3 @@ const cartSlice = createSlice({
 export default cartSlice.reducer;
 export const {addtoCart, removefromCart, increment, decrement, getTotal} = cartSlice.actions;
 
-// updateItemQuantity: (state, action) => {
-//   const { id, quantity } = action.payload;
-//   if (state.items[id]) {
-//     state.items[id].quantity = Math.max(quantity, 0);
-//   }
-//   if (state.items[id].quantity === 0) {
-//     delete state.items[id];
-//   }
-// },
-
-// updateCartPrices: (state, action) => {
-//   const exchangeRate = action.payload; 
-//   state.defaultItems = { ...state.items };
-
-//   Object.keys(state.items).forEach((itemId) => {
-//     const item = { ...state.items[itemId].item };
-//     item.price *= 2; 
-//     state.items[itemId].item = item;
-//   });
-//   console.log("in updatecartprices");
-// },
-// }, });
-// export const { addtoCart, removefromCart, updateItemQuantity, updateCartPrices} = cartSlice.actions;
-// export default cartSlice.reducer;
