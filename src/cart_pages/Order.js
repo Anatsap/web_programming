@@ -2,13 +2,10 @@ import React from 'react';
 import { Formik, Field, Form } from 'formik';
 import * as yup from 'yup';
 import Error  from './ErrorMessage';
-import {Link, useNavigate} from 'react-router-dom';
+import {useNavigate} from 'react-router-dom';
 import {Header, Fields} from './Order.styled';
 import axios from 'axios';
 const BASE_URL = 'http://localhost:5001';
-import products from '../../products.json';
-import Success from "./Success";
-import { send_email } from '../'
 
 const ValidationSchema = yup.object().shape({
     first_name: yup
@@ -28,8 +25,8 @@ const ValidationSchema = yup.object().shape({
     phone: yup
     .string()
     .matches(/^\d+$/, "Phone must contain only digits")
-    .min(9)
-    .max(13)
+    .min(9, "Phone must be at least 9 digits")
+    .max(13, "Phone must be at most 13 digits")
     .required("This field is required"),
     subject: yup
     .string()
@@ -84,6 +81,7 @@ export const Order = () => {
                 actions.setSubmitting(true);
                 try {
                     await new Promise((resolve) => setTimeout(resolve, 1000));
+                    console.log(values);
                     const response = await axios.post(`${BASE_URL}/send_email`, values);
                     if (response.status === 200) {
                         actions.setStatus({ success: response.data.message || 'Email sent!' });
@@ -140,3 +138,4 @@ export const Order = () => {
 );
 };
 
+export default Order;

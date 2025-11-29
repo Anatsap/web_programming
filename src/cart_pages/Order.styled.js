@@ -8,7 +8,7 @@ export const Header = styled.div`
   color: #4a3f35;
 `;
 
-export const Fields = styled.form`
+export const Fields = styled.div`
   width: 420px;
   margin: 40px auto;
   padding: 30px;

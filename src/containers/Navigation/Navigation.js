@@ -6,7 +6,7 @@ import Catalog from '../Catalog/Catalog';
 import ProductDetails from '../ProductDetails/ProductDetails';
 import { Provider } from "react-redux";
 import Checkout from '../../Checkout';
-import { Order } from '../../cart_pages/Order';
+import  { Order }  from '../../cart_pages/Order'
 import Success from '../../cart_pages/Success'
 
 const Navigation = () => (
@@ -25,7 +25,8 @@ const Navigation = () => (
       </li>
       {}
       <li>
-        <NavLink to="/Catalog" className={({ isActive }) => (isActive ? 'selected' : '')}>Catalog</NavLink>
+        <NavLink to="/catalog">Catalog</NavLink>
+        {/* <NavLink to="/Catalog" className={({ isActive }) => (isActive ? 'selected' : '')}>Catalog</NavLink> */}
       </li>
       <li>
         <NavLink to="/blog" className={({ isActive }) => (isActive ? 'selected' : '')}>Journal</NavLink>
@@ -35,8 +36,7 @@ const Navigation = () => (
       </li>
     </ul>
 
-    <Routes> {}
-      {}
+    <Routes>
       <Route path="/catalog" element={<Catalog/>} />
       <Route path="/product/:id" element={<ProductDetails />} />
       <Route path="/blog" element={<div>Hello it is journal</div>} />
@@ -44,7 +44,6 @@ const Navigation = () => (
       <Route path="/checkout" element={<Checkout/>} />
       <Route path="/order" element={<Order/>} />
       <Route path="/success" element={<Success/>} />
-      {}
       <Route path="/" element={<Home />} />
     </Routes>
   </LinkingWrapper>
@@ -52,3 +51,4 @@ const Navigation = () => (
 );
 
 export default Navigation;
+
