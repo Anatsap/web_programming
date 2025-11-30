@@ -8,6 +8,9 @@ import { Provider } from "react-redux";
 import Checkout from '../../Checkout';
 import  { Order }  from '../../cart_pages/Order'
 import Success from '../../cart_pages/Success'
+import Login from '../../components/Sign/Login';
+import Register from '../../components/Sign/Register';
+import ProtectedRoute from '../../components/Sign/ProtectedRoute';
 
 const Navigation = () => (
 
@@ -37,14 +40,19 @@ const Navigation = () => (
     </ul>
 
     <Routes>
-      <Route path="/catalog" element={<Catalog/>} />
-      <Route path="/product/:id" element={<ProductDetails />} />
-      <Route path="/blog" element={<div>Hello it is journal</div>} />
-      <Route path="/contact" element={<div>Hello it is stores</div>} />
-      <Route path="/checkout" element={<Checkout/>} />
-      <Route path="/order" element={<Order/>} />
-      <Route path="/success" element={<Success/>} />
-      <Route path="/" element={<Home />} />
+      <Route path="/register" element={<Register/>} />
+      <Route path="/login" element={<Login/>} />
+
+      <Route path="/" element={<ProtectedRoute/>}>
+        <Route path="/" element={<Home />} />
+        <Route path="/catalog" element={<Catalog/>} />
+        <Route path="/product/:id" element={<ProductDetails />} />
+        <Route path="/blog" element={<div>Hello it is journal</div>} />
+        <Route path="/contact" element={<div>Hello it is stores</div>} />
+        <Route path="/checkout" element={<Checkout/>} />
+        <Route path="/order" element={<Order/>} />
+        <Route path="/success" element={<Success/>} />
+      </Route>
     </Routes>
   </LinkingWrapper>
 

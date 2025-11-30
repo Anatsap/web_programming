@@ -16,4 +16,4 @@ def send_email():
     return jsonify({"message": "Email received", "status": "success"}), 200
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=True, port=5001)

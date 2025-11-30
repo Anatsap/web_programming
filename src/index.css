@@ -13,3 +13,48 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+/* Загальна обгортка */
+.auth-wrapper {
+  width: 420px;
+  margin: 60px auto;
+  padding: 40px;
+  background: #f7f0e9;
+  border-radius: 20px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+
+/* Заголовок */
+.auth-title {
+  text-align: center;
+  font-size: 26px;
+  color: #3c3028;
+  margin-bottom: 30px;
+}
+
+/* Поле */
+.auth-field {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.auth-field label {
+  font-size: 14px;
+  color: #5b4a3f;
+  margin-bottom: 6px;
+}
+
+.auth-field input {
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: 1px solid #d8cfc7;
+  background: #fffefc;
+  font-size: 16px;
+  outline: none;
+}
+
+.auth-field input:focus {
+  border-color: #c5a28a;
+  font-weight: bold;
+}

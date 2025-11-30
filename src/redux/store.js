@@ -14,7 +14,8 @@ const store = configureStore({
     
 })
 store.subscribe(() => {
-    saveState(store.getState());
-  });
-  
+  const currentUser = JSON.parse(localStorage.getItem("user"));
+  saveState("cart_" + (currentUser?.email || "guest"), store.getState().cart);
+});
+
 export default store;

@@ -45,7 +45,7 @@ export const Order = () => {
         
     <div>
         <Header>
-        <h1>Signup</h1>
+        <h1>Checkout</h1>
         </Header>
             <Formik
             initialValues={{
