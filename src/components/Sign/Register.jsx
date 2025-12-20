@@ -1,5 +1,4 @@
-import React from "react";
-import { useState } from "react";
+import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 
 const Register = () => {
@@ -9,25 +8,28 @@ const Register = () => {
         email: "",
         password: "",
     });
+
     const handleSubmit = (e) => {
         e.preventDefault();
+
         const users = JSON.parse(localStorage.getItem("users")) || [];
-    
+
         const exists = users.find(u => u.email === input.email);
+
         if (exists) {
-          alert("User already exists");
-          return;
+            alert("User already exists");
+            return;
         }
-    
-        users.push(input);
-        localStorage.setItem("user", JSON.stringify(users));
+
+        const updatedUsers = [...users, input];
+
+        localStorage.setItem("users", JSON.stringify(updatedUsers));
         localStorage.setItem("user", JSON.stringify(input));
+
         navigate("/");
     };
-        
 
-
-    return(
+    return (
         <div className="auth-wrapper">
             <h2 className="auth-title">
                 Register the new account
@@ -37,7 +39,7 @@ const Register = () => {
                     <input
                         name="name"
                         value={input.name}
-                        onChange={ (e) => setInput({...input, [e.target.name] : e.target.value})}
+                        onChange={(e) => setInput({ ...input, [e.target.name]: e.target.value })}
                         type="text"
                         id="form3Example1cg"
                         className="form-control form-control-lg"
@@ -46,11 +48,12 @@ const Register = () => {
                         Username
                     </label>
                 </div>
+
                 <div className="auth-field">
                     <input
                         name="email"
                         value={input.email}
-                        onChange={ (e) => setInput({...input, [e.target.name] : e.target.value})}
+                        onChange={(e) => setInput({ ...input, [e.target.name]: e.target.value })}
                         type="email"
                         id="form3Example3cg"
                         className="form-control form-control-lg"
@@ -59,11 +62,12 @@ const Register = () => {
                         E-mail
                     </label>
                 </div>
+
                 <div className="auth-field">
                     <input
                         name="password"
                         value={input.password}
-                        onChange={ (e) => setInput({...input, [e.target.name] : e.target.value})}
+                        onChange={(e) => setInput({ ...input, [e.target.name]: e.target.value })}
                         type="password"
                         id="form3Example4cg"
                         className="form-control form-control-lg"
@@ -72,7 +76,7 @@ const Register = () => {
                         Password
                     </label>
                 </div>
-                
+
                 <div className="auth-btn">
                     <button
                         type="submit"
@@ -81,16 +85,14 @@ const Register = () => {
                         SIGN ME UP
                     </button>
                 </div>
+
                 <p className="auth-text">
                     Already a member?{" "}
-                <Link to="/login" className="auth-link">
-                    <u>Sign in</u>
-                </Link>
+                    <Link to="/login" className="auth-link"><u>Sign in</u></Link>
                 </p>
-
-
             </form>
         </div>
     );
 };
+
 export default Register;

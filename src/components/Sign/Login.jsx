@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 
@@ -11,18 +10,22 @@ const Login = () => {
 
     const handleLogin = (e) => {
         e.preventDefault();
+
         const users = JSON.parse(localStorage.getItem("users")) || [];
+
         const foundUser = users.find(
-        u => u.email === email && u.password === password
+            u => u.email === input.email && u.password === input.password
         );
+
         if (!foundUser) {
             alert("User not found");
-        } else {
-            localStorage.setItem("user", JSON.stringify(foundUser)); 
+            return;
+        }
+
+        localStorage.setItem("user", JSON.stringify(foundUser));
         navigate("/");
-        };
-    }
-    
+    };
+
     return (
         <div className="auth-wrapper">
             <h2 className="auth-title">Submit the form to sign in</h2>

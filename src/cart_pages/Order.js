@@ -21,7 +21,18 @@ const ValidationSchema = yup.object().shape({
     email: yup
     .string()
     .email("Invalid email")
-    .required("Email is required"),
+    .required("Email is required")
+    .test(
+      "domain-length",
+      "Domain must be at least 2 characters",
+      (value) => {
+        if (!value) return false;
+        const domain = value.split(".")[1];
+        if (!domain) return false;
+        const domainParts = domain.split(".");
+        return domainParts[0].length >= 2;
+      }
+    ), 
     phone: yup
     .string()
     .matches(/^\d+$/, "Phone must contain only digits")
@@ -97,7 +108,7 @@ export const Order = () => {
                 }
             }}            
             >
-            {({errors, touched, isSubmitting, status }) => (
+            {({errors, touched, isSubmitting, status, setValues }) => (
                 <Form>
                     <Fields>
                 <div className="email-item">
@@ -128,10 +139,31 @@ export const Order = () => {
                 <div className="email-item">
                     <button type="submit" disabled={isSubmitting}>Submit</button>
                 </div>
-                {status && status.success && <div>{status.success}</div>}
-                </Fields>
-                
-                </Form>
+                <div className="email-item">
+        <button
+          type="button"
+          onClick={() => {
+            const user = JSON.parse(localStorage.getItem("user"));
+            if (user) {
+              setValues({
+                first_name: user.name || '',
+                last_name: '',        
+                email: user.email || '',
+                phone: '' || '',
+                subject: '',
+                msg: '',
+              });
+            } else {
+              alert("No saved user data");
+            }
+          }}
+        >
+          Fill user's data
+        </button>
+      </div>
+      {status && status.success && <div>{status.success}</div>}
+            </Fields>
+            </Form>
             )}
             </Formik>
         </div>
