@@ -4,9 +4,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const editIndex = editIndexRaw !== null ? parseInt(editIndexRaw) : null;
   let cars = JSON.parse(localStorage.getItem('cars')) || [];
   if (cars.length === 0) {
-    // якщо localStorage порожній — підтягуємо дефолтні з window.appCars (вони вже є в index.js)
     if (window.appCars?.reloadCars) {
-      window.appCars.reloadCars(); // підгружає дефолтні машини
+      window.appCars.reloadCars(); 
       cars = JSON.parse(localStorage.getItem('cars')) || [];
     }
   }
